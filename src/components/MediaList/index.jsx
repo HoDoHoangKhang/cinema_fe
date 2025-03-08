@@ -4,7 +4,11 @@ import Loading from "../Loading";
 import MovieCard from "../MovieCard";
 import useFetch from "../../hooks/useFetch";
 
-
+//Slider
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import React from "react";
+import Slider from "react-slick";
 function MediaList({tabs, title}) {
   const [type, setType] = useState(tabs[0].id);
 
@@ -47,17 +51,55 @@ function MediaList({tabs, title}) {
 
   //   fetchMovies();
   // }, [type]);
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+
+  };
   if (isLoading) {
-    return <Loading></Loading>;
+    return (
+      <div className="bg-black px-5 pt-5 text-white transition-all sm:px-8">
+        <Title type={type} setType={setType} tabs={tabs} title={title}></Title>
+        <Loading></Loading>
+      </div>
+    );
   }
   return (
     <div className="bg-black px-5 pt-5 text-white transition-all sm:px-8">
       <Title type={type} setType={setType} tabs={tabs} title={title}></Title>
-      <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4 xl:grid-cols-6">
+      <Slider {...settings} className="mt-6">
         {movies.map((movie) => {
-          return <MovieCard key={movie.id} data={movie}></MovieCard>;
+          return <MovieCard key={movie.id} data={movie} ></MovieCard>;
         })}
-      </div>
+      </Slider>
     </div>
   );
 }

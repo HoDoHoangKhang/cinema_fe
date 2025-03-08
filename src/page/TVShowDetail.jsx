@@ -7,22 +7,27 @@ import { groupBy } from "lodash";
 import RelatedMediaList from "../components/MovieDetail/RelatedMediaList";
 import Information from "../components/MovieDetail/Information";
 import useFetch from "../hooks/useFetch";
+import SeasonList from "../components/MovieDetail/SeasonList";
 
-function MovieDetail() {
+function TVShowDetail() {
   const { id } = useParams();
-  
+
   const { data: movieDetail, isLoading } = useFetch({
-    url: `/movie/${id}?append_to_response=release_dates,credits,videos`,
+    url: `/tv/${id}?append_to_response=content_ratings,release_dates,aggregate_credits,videos`,
   });
   const { data: movieRelatedTemp, isLoading: loadingRelated } = useFetch({
-    url: `/movie/${id}/recommendations`,
+    url: `/tv/${id}/recommendations`,
   });
-  const movieRelated=(movieRelatedTemp.results || [] ).slice(0,8);
-  
-  const crews = (movieDetail.credits?.crew || [])
-    .filter((crew) => ["Director", "Screenplay", "Writer"].includes(crew.job))
-    .map((crew) => ({ id: crew.id, job: crew.job, name: crew.name }));
-  console.log(crews);
+  const movieRelated = (movieRelatedTemp.results || []).slice(0, 8);
+
+  const crews = (movieDetail.aggregate_credits?.crew || [])
+    .filter((crew) => {
+      const jobs = (crew.jobs || []).map((j) => j.job);
+      return ["Director", "Writer"].some((job) => jobs.find((j) => j === job));
+    })
+    .map((crew) => ({ id: crew.id, job: crew.jobs[0].job, name: crew.name }));
+
+  console.log({ crews });
   const groupedCrews = groupBy(crews, "job");
   console.log(groupedCrews);
 
@@ -34,9 +39,13 @@ function MovieDetail() {
       <Banner movieDetail={movieDetail} groupedCrews={groupedCrews}></Banner>
       <div className="mx-auto flex max-w-screen-xl gap-6 px-6 py-10">
         <div className="flex-[2]">
-          <ActorList actors={movieDetail.credits?.cast || []}></ActorList>
+          <ActorList
+            actors={movieDetail.aggregate_credits?.cast || []}
+          ></ActorList>
+          <SeasonList seasons={movieDetail.seasons}></SeasonList>
           <RelatedMediaList
-            movieRelated={movieRelated || []} title={'Related'}
+            movieRelated={movieRelated || []}
+            title={"Related"}
           ></RelatedMediaList>
         </div>
         <div className="flex-1">
@@ -47,4 +56,4 @@ function MovieDetail() {
   );
 }
 
-export default MovieDetail;
+export default TVShowDetail;

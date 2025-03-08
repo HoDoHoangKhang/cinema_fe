@@ -30,3 +30,4 @@ npm install react-icons --save
 
 //tao file .env la file an, kh nen commit len github 
 
+npm i react-hook-form

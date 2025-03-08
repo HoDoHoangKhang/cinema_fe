@@ -11,10 +11,17 @@ function FeatureMovie() {
   const [activeMovieId, setActiveMovieId] = useState();
 
   const { data: moviesPopular, isLoading } = useFetch({
-    url: "/movie/popular",
+    url: '/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&include_video=true',
   });
+
+  const { data: videoResponse } = useFetch(
+    {
+      url: `/movie/${activeMovieId}/videos`,
+    },
+    { enabled: !!activeMovieId },
+  );
   const movies = (moviesPopular.results || []).slice(0, 4);
-  console.log({ moviesPopular: movies });
+  console.log({ moviesPopular: movies, videoResponse: videoResponse });
 
   useEffect(() => {
     if (movies[0]?.id) {
@@ -73,7 +80,15 @@ function FeatureMovie() {
         .map((movie) => {
           return (
             !isLoading &&
-            movies.length > 0 && <Movie key={movie.id} data={movie} />
+            movies.length > 0 && (
+              <Movie
+                key={movie.id}
+                data={movie}
+                videoResponse={(videoResponse?.results || []).find(
+                  (video) => video.type === "Trailer" && video.site==='YouTube',
+                )?.key}
+              />
+            )
           );
         })}
       <Paginate
