@@ -1,111 +1,114 @@
-# 🎬 CINEMA-APP-FE  
-_Discover Movies, Watch Trailers, and Explore the World of Cinema_
+<div id="top">
 
-[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)  
-[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.0-blue)](https://tailwindcss.com/)  
-[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)  
-[![Build with Vite](https://img.shields.io/badge/Vite-Build-orange)](https://vitejs.dev/)
+<!-- HEADER STYLE: CLASSIC -->
+<div align="center">
 
----
 
-## 📚 Table of Contents
+# CINEMA APP
 
-- [Overview](#overview)  
-- [Getting Started](#getting-started)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Testing](#testing)  
-- [License](#license)
+<em>Discover Movies, Elevate Your Viewing Experience Today!</em>
 
----
+<!-- BADGES -->
+<img src="https://img.shields.io/github/last-commit/HoDoHoangKhang/cinema_fe?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
+<img src="https://img.shields.io/github/languages/top/HoDoHoangKhang/cinema_fe?style=flat&color=0080ff" alt="repo-top-language">
+<img src="https://img.shields.io/github/languages/count/HoDoHoangKhang/cinema_fe?style=flat&color=0080ff" alt="repo-language-count">
 
-## 🧾 Overview
+<em>Built with the tools and technologies:</em>
 
-**Cinema App** is a modern web application built with React and TailwindCSS, designed to help users discover, search, and view movie information fetched from **The Movie Database (TMDB)** API.  
-It offers an elegant user experience for browsing the latest releases, trending movies, top-rated films, and more.
+<img src="https://img.shields.io/badge/JSON-000000.svg?style=flat&logo=JSON&logoColor=white" alt="JSON">
+<img src="https://img.shields.io/badge/npm-CB3837.svg?style=flat&logo=npm&logoColor=white" alt="npm">
+<img src="https://img.shields.io/badge/Prettier-F7B93E.svg?style=flat&logo=Prettier&logoColor=black" alt="Prettier">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
+<img src="https://img.shields.io/badge/React-61DAFB.svg?style=flat&logo=React&logoColor=black" alt="React">
+<br>
+<img src="https://img.shields.io/badge/Lodash-3492FF.svg?style=flat&logo=Lodash&logoColor=white" alt="Lodash">
+<img src="https://img.shields.io/badge/Vite-646CFF.svg?style=flat&logo=Vite&logoColor=white" alt="Vite">
+<img src="https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&logo=ESLint&logoColor=white" alt="ESLint">
+<img src="https://img.shields.io/badge/CSS-663399.svg?style=flat&logo=CSS&logoColor=white" alt="CSS">
+<img src="https://img.shields.io/badge/React%20Hook%20Form-EC5990.svg?style=flat&logo=React-Hook-Form&logoColor=white" alt="React%20Hook%20Form">
 
-### Key Features
-
-- 🎥 **Movie Discovery**: Browse trending, top-rated, and upcoming movies.  
-- 🔎 **Search Functionality**: Quickly find movies by title or keyword.  
-- 🎞️ **Trailer Previews**: Watch official trailers directly within the app.  
-- 📱 **Responsive Design**: Fully optimized for all devices.  
-- ⚙️ **TMDB Integration**: Real-time movie data using the free TMDB API.  
-- 💡 **Clean UI**: Minimal and modern interface for smooth navigation.
+</div>
+<br>
 
 ---
 
-## 🚀 Getting Started
+## Table of Contents
+
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Usage](#usage)
+    - [Testing](#testing)
+
+---
+
+## Overview
+
+**cinema_fe** is a modern web application that empowers movie enthusiasts to discover, browse, and manage their favorite films and TV shows with ease.
+
+**Why cinema_fe?**
+
+This project aims to deliver a seamless and engaging experience for users while leveraging the latest web technologies. The core features include:
+
+- 🎨 **Responsive Design:** Ensures a consistent experience across all devices, adapting to various screen sizes.
+- ⚡ **Modern Tech Stack:** Built with React and Vite, providing fast performance and a streamlined development process.
+- 📊 **Dynamic Content Rendering:** Fetches and displays real-time movie and TV show data, enhancing user engagement.
+- 🔍 **Customizable Search Functionality:** Allows users to filter content based on type, genre, and ratings for tailored results.
+- ✅ **Code Quality Assurance:** Integrated ESLint configuration maintains high coding standards and consistency.
+- 🌟 **User-Friendly Interface:** Intuitive navigation and visually appealing components create an enjoyable browsing experience.
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
-- Programming Language: JavaScript  
-- Package Manager: `npm`  
-- TMDB API Key (get one at [themoviedb.org](https://www.themoviedb.org/))
+This project requires the following dependencies:
 
----
+- **Programming Language:** JavaScript
+- **Package Manager:** Npm
 
-## ⚙️ Installation
+### Installation
 
-Install and run the Cinema App locally:
+Build cinema_fe from the source and intsall dependencies:
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/cinema-app-fe.git
+1. **Clone the repository:**
+
+    ```sh
+    ❯ git clone https://github.com/HoDoHoangKhang/cinema_fe
+    ```
+
+2. **Navigate to the project directory:**
+
+    ```sh
+    ❯ cd cinema_fe
+    ```
+
+3. **Install the dependencies:**
+
+**Using [npm](https://www.npmjs.com/):**
+
+```sh
+❯ npm install
 ```
 
-```bash
-# Navigate to the project folder
-cd cinema-app-fe
+### Usage
+
+Run the project with:
+
+**Using [npm](https://www.npmjs.com/):**
+
+```sh
+npm start
 ```
 
-```bash
-# Install dependencies
-npm install
+### Testing
+
+Cinema_fe uses the {__test_framework__} test framework. Run the test suite with:
+
+**Using [npm](https://www.npmjs.com/):**
+
+```sh
+npm test
 ```
-
-```bash
-# Create a .env file and add your TMDB API key
-touch .env
-```
-
-Inside `.env` file:
-
-```
-VITE_TMDB_API_KEY=your_tmdb_api_key
-```
-
----
-
-## 🖥️ Usage
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-The app will be running at `http://localhost:5173`.
-
----
-
-## 🧪 Testing
-
-> ⚠️ Testing is not yet implemented in this version.  
-You can integrate testing frameworks like **Vitest**, **Jest**, or **React Testing Library** later.
-
-To prepare for testing:
-
-```bash
-npm run test
-```
-
----
-
-## 📝 License
-
-This project is licensed under the [MIT License](./LICENSE).
-
----
-
-**Made with ❤️ by Hoàng Khang**
