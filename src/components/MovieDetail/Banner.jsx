@@ -47,7 +47,7 @@ function Banner({ movieDetail, groupedCrews }) {
               <p className="hidden sm:block">{movieDetail.origin_country}</p>
               <p className="hidden sm:block">{genres}</p>
             </div>
-            <div className="mb-5 flex items-center gap-8 font-bold">
+            <div className="mb-5 flex items-center gap-8 text-[14px] font-bold">
               <div className="flex items-center gap-1">
                 <CircleProgress
                   value={Math.round(movieDetail.vote_average * 10)}
